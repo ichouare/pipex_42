@@ -6,11 +6,26 @@
 /*   By: ichouare <ichouare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 14:33:41 by ichouare          #+#    #+#             */
-/*   Updated: 2023/01/19 17:11:43 by ichouare         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:41:40 by ichouare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pipex.h"
+
+char	*ft_pathcmds(char **env)
+{
+	int	i;
+
+	i = 0;
+	while (env[i] != NULL)
+	{
+		if (strncmp(env[i], "PATH", 4) == 0)
+			return (&env[i][5]);
+		i++;
+	}
+	exit(write(2, "path cmd not found\n", 19));
+	return (NULL);
+}
 
 int	ft_strncmp(char *p1, char *p2, int len)
 {	
